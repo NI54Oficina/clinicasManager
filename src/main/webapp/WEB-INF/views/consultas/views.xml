@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition name="consultas/list" extends="noMenu" >
+        <put-attribute name="body" value="/WEB-INF/views/consultas/list.jsp" />
+    </definition>
+
+    <definition name="consultas/planForm" extends="empty" >
+        <put-attribute name="body" value="/WEB-INF/views/consultas/planForm.jsp" />
+    </definition>
+    
+    <definition name="consultas/view" extends="default" >
+        <put-attribute name="body" value="/WEB-INF/views/consultas/view.jsp" />
+    </definition>
+    
+    <definition name="consultas/create" extends="default" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/create.jsp" />
+        <put-attribute name="menu" value="/WEB-INF/views/menuPrimeraVez.jsp" />
+    </definition>
+    
+	<definition name="consultas/verDatosIniciales" extends="default" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/verDatosIniciales.jsp" />
+    </definition>
+    
+    <definition name="consultas/altaForm" extends="default" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/altaForm.jsp" />
+    </definition>
+    
+    <definition name="consultas/cirugiaForm" extends="default" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/cirugiaForm.jsp" />
+    </definition>
+    
+    <definition name="consultas/internacionForm" extends="default" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/internacionForm.jsp" />
+    </definition>  
+    
+    <definition name="consultas/mediaForm" extends="empty" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/mediaForm.jsp" />
+    </definition>  
+
+    <definition name="consultas/mediaList" extends="empty" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/mediaList.jsp" />
+    </definition>
+    
+    <definition name="consultas/evolucionList" extends="empty" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/evolucionList.jsp" />
+    </definition> 
+    
+    <definition name="consultas/crearEmail" extends="empty" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/crearEmail.jsp" />
+    </definition>  
+    
+    <definition name="consultas/fichaModal" extends="empty" >        
+        <put-attribute name="body" value="/WEB-INF/views/consultas/fichaModal.jsp" />
+    </definition>         
+
+</tiles-definitions>

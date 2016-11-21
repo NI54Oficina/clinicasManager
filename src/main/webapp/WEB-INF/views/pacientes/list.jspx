@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_ar_com_clinicasmanager_entity_Paciente" items="${pacientes}" z="oWHFVbW7RUg56PEDXDE3vjLEZBY=">
+        <table:table data="${pacientes}" id="l_ar_com_clinicasmanager_entity_Paciente" path="/pacientes" z="c3SWYRgNMe2YjPX6rQX4xMJ6pWI=">
+            <table:column id="c_ar_com_clinicasmanager_entity_Paciente_dni" property="dni" z="JfCxdFqmfmQy2DG+S6gKazSrvug="/>
+            <table:column id="c_ar_com_clinicasmanager_entity_Paciente_nombre" property="nombre" z="P/ZivO82OQBKxK6uOyVRtchxkDw="/>
+            <table:column id="c_ar_com_clinicasmanager_entity_Paciente_edad" property="edad" z="UxJpUY5t0iPtaFtzFqv022i/BZQ="/>
+            <table:column id="c_ar_com_clinicasmanager_entity_Paciente_sexo" property="sexo" z="wDpY9/rnifdXXpyDwvAZ7syvJ0I="/>
+            <table:column id="c_ar_com_clinicasmanager_entity_Paciente_cobertura" property="cobertura" z="QUItGYGBAtCDN17OYGWSaIcHzLg="/>
+            <table:column id="c_ar_com_clinicasmanager_entity_Paciente_ocupacion" property="ocupacion" z="ZKtfbaGEYM1BLvOkOJSR8+t28aU="/>
+        </table:table>
+    </page:list>
+</div>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="noMenu" name="buscador/paciente">
+        <put-attribute name="body" value="/WEB-INF/views/buscador/paciente.jsp"/>
+    </definition>
+    
+    <definition extends="noMenu" name="buscador/consulta">
+        <put-attribute name="body" value="/WEB-INF/views/buscador/consulta.jsp"/>
+    </definition>
+</tiles-definitions>

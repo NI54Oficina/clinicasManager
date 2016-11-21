@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+
+    <definition name="tratamiento/create" extends="empty" >
+        <put-attribute name="body" value="/WEB-INF/views/tratamiento/create.jsp" />
+    </definition>
+
+    <definition name="tratamiento/list" extends="default" >
+        <put-attribute name="body" value="/WEB-INF/views/tratamiento/list.jsp" />
+    </definition>
+
+</tiles-definitions>

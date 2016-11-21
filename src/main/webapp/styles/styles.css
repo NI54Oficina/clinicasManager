@@ -1,0 +1,79 @@
+html, body{
+	height: 100%;
+}
+
+.header {
+	border-bottom: 1px solid black;
+}
+
+#main {
+	margin-top: 25px;
+}
+
+#menu_lateral {
+	float: left;
+}
+
+/******************** bootstrap **************************/
+.modal-body img{
+	max-width: 100%;
+}
+
+.page-header{
+	margin-top: 20px;
+}
+
+.modal h3{
+	margin: 0;
+}
+
+
+/******************** commons **************************/
+.textAreaDisplay {
+	height: 100px;
+	overflow-y: auto;
+}
+
+.bloqueador{
+	position: absolute; 
+	height: 100%;
+	width: 100%;
+	background-color: #eee;
+	cursor: not-allowed;
+	opacity: 0.3; 
+	z-index: 10; 
+	display: none;
+}
+
+.resultadosBusqueda{
+	margin-top: 25px;
+}
+
+.ajaxLoader{
+	position: absolute; 
+	left: 50%; 
+	top: 50%
+}
+
+/******************** tables **************************/
+.table-sortable thead{
+	cursor: pointer;
+}
+
+/******************** mediaList **************************/
+.mediaContainer {
+	overflow-x: scroll;
+	height: 120px;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+
+.mediaElement {
+	width: 100px;	
+	margin-right: 20px;
+}
+
+.selectedMediaElement{
+	border: 2px solid #FFCC33;	
+}
+

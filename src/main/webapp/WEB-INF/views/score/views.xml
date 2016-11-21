@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN" "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+    <definition extends="empty" name="score/quickDash">
+        <put-attribute name="body" value="/WEB-INF/views/score/quickDash.jsp"/>
+    </definition>
+    <definition extends="empty" name="score/michigan">
+        <put-attribute name="body" value="/WEB-INF/views/score/michigan.jsp"/>
+    </definition>    
+	<definition extends="empty" name="score/escalaDeDolor">
+        <put-attribute name="body" value="/WEB-INF/views/score/escalaDeDolor.jsp"/>
+    </definition>
+	<definition extends="empty" name="score/artritis">
+        <put-attribute name="body" value="/WEB-INF/views/score/artritis.jsp"/>
+    </definition>       
+	<definition extends="empty" name="score/movilidadDedos">
+        <put-attribute name="body" value="/WEB-INF/views/score/movilidadDedos.jsp"/>
+    </definition>      
+   	<definition extends="empty" name="score/resumen">
+        <put-attribute name="body" value="/WEB-INF/views/score/resumen.jsp"/>
+    </definition>
+   	<definition extends="default" name="score/list">
+        <put-attribute name="body" value="/WEB-INF/views/score/list.jsp"/>
+    </definition>    
+</tiles-definitions>
