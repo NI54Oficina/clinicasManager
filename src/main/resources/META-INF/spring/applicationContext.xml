@@ -68,9 +68,9 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
- 	<jdbc:initialize-database enabled="true" data-source="dataSource">
- 		<jdbc:script location="classpath*:META-INF/db-scripts/*.sql" />
- 	</jdbc:initialize-database>
+ 	<!--<jdbc:initialize-database enabled="true" data-source="dataSource">-->
+ 		<!--<jdbc:script location="classpath*:META-INF/db-scripts/*.sql" />-->
+ 	<!--</jdbc:initialize-database>-->
 	
 	<bean class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" id="passwordEncoder" />	
 	
@@ -79,7 +79,7 @@
         <property name="host" value="smtp.gmail.com"/>
         <property name="port" value="587" />
         <property name="username" value="equipodoctoralevy@gmail.com" />
-		<property name="password" value="hospital2014" />
+		<property name="password" value="heba2016" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>
