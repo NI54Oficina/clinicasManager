@@ -26,6 +26,8 @@ import com.google.common.collect.Iterables;
 @RequestMapping(value = "/consulta")
 public class EmailController {
 
+	private static final String LINE_SEPARATOR = System.getProperty("line.separator");
+
 	@Autowired
 	private ConsultaService consultaService;
 	
@@ -54,33 +56,33 @@ public class EmailController {
 		StringBuilder builder = crearEmailContentBasico(consulta);
 		
 		if(consulta.getDiagnostico() != null){
-			builder.append("Diagnósticos:" + System.lineSeparator());
+			builder.append("Diagnósticos:" + LINE_SEPARATOR);
 			builder.append(dateFormat.format(consulta.getDiagnostico().getFechaDiagnostico()) + " - " + consulta.getDiagnostico().getResumen());
 			for (Diagnostico diagnostico : consulta.getDiagnosticosAnteriores()) {
-				builder.append(dateFormat.format(diagnostico.getFechaDiagnostico()) + " - " + diagnostico.getResumen() + System.lineSeparator());
+				builder.append(dateFormat.format(diagnostico.getFechaDiagnostico()) + " - " + diagnostico.getResumen() + LINE_SEPARATOR);
 			}
-			builder.append(System.lineSeparator());
+			builder.append(LINE_SEPARATOR);
 		}
 		
 		if(!consulta.getTratamientos().isEmpty() || !consulta.getCirugias().isEmpty()){
 			List<Tratamiento> tratamientos = consultaService.getTratamientoAndCirugiasOrderedByDate(consulta);
-			builder.append("Tratamientos:" + System.lineSeparator());
+			builder.append("Tratamientos:" + LINE_SEPARATOR);
 			for (Tratamiento tratamiento : tratamientos) {
-				builder.append(dateFormat.format(tratamiento.getFechaInicioTratamiento()) + " - " + tratamiento.getFullName() + System.lineSeparator());
+				builder.append(dateFormat.format(tratamiento.getFechaInicioTratamiento()) + " - " + tratamiento.getFullName() + LINE_SEPARATOR);
 			}
-			builder.append(System.lineSeparator());
+			builder.append(LINE_SEPARATOR);
 		}
 		
 		if(!consulta.getEvoluciones().isEmpty()){
-			builder.append("Evoluciones:" + System.lineSeparator());
+			builder.append("Evoluciones:" + LINE_SEPARATOR);
 			for (Evolucion evolucion : consulta.getEvoluciones()) {
-				builder.append(dateFormat.format(evolucion.getFecha()) + " - " + evolucion.getTexto() + System.lineSeparator());
+				builder.append(dateFormat.format(evolucion.getFecha()) + " - " + evolucion.getTexto() + LINE_SEPARATOR);
 			}
-			builder.append(System.lineSeparator());
+			builder.append(LINE_SEPARATOR);
 		}
 		
 		if(consulta.getAlta() != null){
-			builder.append("Alta: " + dateFormat.format(consulta.getAlta().getFecha()) + System.lineSeparator());
+			builder.append("Alta: " + dateFormat.format(consulta.getAlta().getFecha()) + LINE_SEPARATOR);
 			builder.append(consulta.getAlta().getTexto());
 		}
 		
@@ -104,57 +106,57 @@ public class EmailController {
 		StringBuilder builder = new StringBuilder();
 		
 		if(consulta.getEstado().getSegundaVez()){
-			builder.append("Nombre: " + consulta.getPaciente().getNombre() + System.lineSeparator());
-			builder.append("Dni: " + consulta.getPaciente().getDni() + System.lineSeparator());
+			builder.append("Nombre: " + consulta.getPaciente().getNombre() + LINE_SEPARATOR);
+			builder.append("Dni: " + consulta.getPaciente().getDni() + LINE_SEPARATOR);
 			
 			if(!consulta.getEvoluciones().isEmpty()){
-				builder.append("Última evolución:" + System.lineSeparator() + Iterables.getLast(consulta.getEvoluciones()).getTexto() + System.lineSeparator());
+				builder.append("Última evolución:" + LINE_SEPARATOR + Iterables.getLast(consulta.getEvoluciones()).getTexto() + LINE_SEPARATOR);
 			}
 			
 			if(!consulta.getTratamientos().isEmpty() || !consulta.getCirugias().isEmpty()){
-				builder.append("Último tratamiento:" + System.lineSeparator());
+				builder.append("Último tratamiento:" + LINE_SEPARATOR);
 				
 				Tratamiento ultimoTratamiento = Iterables.getLast(consulta.getTratamientos(), null);
 				Cirugia ultimaCirugia = Iterables.getLast(consulta.getCirugias(), null);
 				
 				if(ultimoTratamiento != null  && ultimaCirugia != null) {
 					if(ultimoTratamiento.getFechaInicioTratamiento().after(ultimaCirugia.getFechaCirugia())) {
-						builder.append(ultimoTratamiento.getFullName() + System.lineSeparator());
+						builder.append(ultimoTratamiento.getFullName() + LINE_SEPARATOR);
 					}
 					else {
-						builder.append(ultimaCirugia.getFullName() + System.lineSeparator());
+						builder.append(ultimaCirugia.getFullName() + LINE_SEPARATOR);
 					}
 				}
 				else if(ultimoTratamiento != null ) {
-					builder.append(ultimoTratamiento.getFullName() + System.lineSeparator());
+					builder.append(ultimoTratamiento.getFullName() + LINE_SEPARATOR);
 				}
 				else {
-					builder.append(ultimaCirugia.getFullName() + System.lineSeparator());
+					builder.append(ultimaCirugia.getFullName() + LINE_SEPARATOR);
 				}
 			}
 			
-			builder.append(System.lineSeparator());
+			builder.append(LINE_SEPARATOR);
 		}
 		else{
 			String fecha = consulta.getDatosIniciales().getFechaAccidente() != null ? dateFormat.format(consulta.getDatosIniciales().getFechaAccidente()) : "Sin Fecha";
 			
-			builder.append("Nombre: " + consulta.getPaciente().getNombre() + System.lineSeparator());
-			builder.append("Dni: " + consulta.getPaciente().getDni() + System.lineSeparator());
-			builder.append("Edad: " + consulta.getPaciente().getEdad() + System.lineSeparator());
-			builder.append("Sexo: " + consulta.getPaciente().getSexo() + System.lineSeparator());
-			builder.append("Fecha de accidente: " + fecha + System.lineSeparator());
-			builder.append("Fecha de primer consulta: " + consulta.getFechaPrimerConsulta() + System.lineSeparator());
-			builder.append("Interrogatorio:" + System.lineSeparator() + consulta.getDatosIniciales().getInterrogatorio() + System.lineSeparator());
+			builder.append("Nombre: " + consulta.getPaciente().getNombre() + LINE_SEPARATOR);
+			builder.append("Dni: " + consulta.getPaciente().getDni() + LINE_SEPARATOR);
+			builder.append("Edad: " + consulta.getPaciente().getEdad() + LINE_SEPARATOR);
+			builder.append("Sexo: " + consulta.getPaciente().getSexo() + LINE_SEPARATOR);
+			builder.append("Fecha de accidente: " + fecha + LINE_SEPARATOR);
+			builder.append("Fecha de primer consulta: " + consulta.getFechaPrimerConsulta() + LINE_SEPARATOR);
+			builder.append("Interrogatorio:" + LINE_SEPARATOR + consulta.getDatosIniciales().getInterrogatorio() + LINE_SEPARATOR);
 			
 			if(consulta.getDiagnostico() != null){
-				builder.append("Diagnóstico:" + System.lineSeparator() + consulta.getDiagnostico().getResumen() + System.lineSeparator());
+				builder.append("Diagnóstico:" + LINE_SEPARATOR + consulta.getDiagnostico().getResumen() + LINE_SEPARATOR);
 			}
 			
 			if(!consulta.getTratamientos().isEmpty()){
-				builder.append("Último tratamiento:" + System.lineSeparator() + Iterables.getLast(consulta.getTratamientos()).getFullName() + System.lineSeparator());
+				builder.append("Último tratamiento:" + LINE_SEPARATOR + Iterables.getLast(consulta.getTratamientos()).getFullName() + LINE_SEPARATOR);
 			}
 			
-			builder.append(System.lineSeparator());
+			builder.append(LINE_SEPARATOR);
 		}
 		
 		return builder;

@@ -23,6 +23,8 @@ import org.springframework.util.StringUtils;
 @Service
 @Transactional
 public class GoogleCalendarServiceImpl implements GoogleCalendarService {
+
+	private static final String LINE_SEPARATOR = System.getProperty("line.separator");
 	
 	@Autowired
 	private Calendar googleCalendarService;
@@ -107,28 +109,28 @@ public class GoogleCalendarServiceImpl implements GoogleCalendarService {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		StringBuilder builder = new StringBuilder();
 		
-		builder.append("Nombre: " + consulta.getPaciente().getNombre() + System.lineSeparator());
-		builder.append("Edad: " + consulta.getPaciente().getEdad() + System.lineSeparator());
-		builder.append("DNI: " + consulta.getPaciente().getDni() + System.lineSeparator());
-		builder.append("N° afiliado: " + consulta.getPaciente().getNumeroSocio() + System.lineSeparator());
-		builder.append("Teléfono: " + consulta.getPaciente().getTelefono() + System.lineSeparator());
-		builder.append("Cobertura: " + consulta.getPaciente().getCobertura() + System.lineSeparator());
+		builder.append("Nombre: " + consulta.getPaciente().getNombre() + LINE_SEPARATOR);
+		builder.append("Edad: " + consulta.getPaciente().getEdad() + LINE_SEPARATOR);
+		builder.append("DNI: " + consulta.getPaciente().getDni() + LINE_SEPARATOR);
+		builder.append("N° afiliado: " + consulta.getPaciente().getNumeroSocio() + LINE_SEPARATOR);
+		builder.append("Teléfono: " + consulta.getPaciente().getTelefono() + LINE_SEPARATOR);
+		builder.append("Cobertura: " + consulta.getPaciente().getCobertura() + LINE_SEPARATOR);
 		if(!StringUtils.isEmpty(consulta.getPaciente().getObraSocial())) {
-			builder.append("Obra social: " + consulta.getPaciente().getObraSocial() + System.lineSeparator());
+			builder.append("Obra social: " + consulta.getPaciente().getObraSocial() + LINE_SEPARATOR);
 		}
 
 		if(consulta.getDiagnostico() != null){
-			builder.append("Diagnósticos:" + System.lineSeparator());
+			builder.append("Diagnósticos:" + LINE_SEPARATOR);
 			builder.append(dateFormat.format(consulta.getDiagnostico().getFechaDiagnostico()) + " - " + consulta.getDiagnostico().getResumen());
 			for (Diagnostico diagnostico : consulta.getDiagnosticosAnteriores()) {
-				builder.append(dateFormat.format(diagnostico.getFechaDiagnostico()) + " - " + diagnostico.getResumen() + System.lineSeparator());
+				builder.append(dateFormat.format(diagnostico.getFechaDiagnostico()) + " - " + diagnostico.getResumen() + LINE_SEPARATOR);
 			}
-			builder.append(System.lineSeparator());
+			builder.append(LINE_SEPARATOR);
 		}
 		
-		builder.append("Cirugía propuesta: " + cirugia.getFullName() + System.lineSeparator());
-		builder.append("Descripción: " + cirugia.getDescripcion() + System.lineSeparator());
-		builder.append("Lugar: " + cirugia.getLugar() + System.lineSeparator());
+		builder.append("Cirugía propuesta: " + cirugia.getFullName() + LINE_SEPARATOR);
+		builder.append("Descripción: " + cirugia.getDescripcion() + LINE_SEPARATOR);
+		builder.append("Lugar: " + cirugia.getLugar() + LINE_SEPARATOR);
 		
 		return builder.toString();
 	}
